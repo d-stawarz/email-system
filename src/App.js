@@ -12,10 +12,10 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={() => <Page Component={Campaign}/>}/>
-          <Route exact path="/campaign-list" component={() => <Page Component={CampaignList}/>}/>
-          <Route exact path="/add-subscriber" component={() => <Page Component={Subscriber}/>}/>
-          <Route exact path="/subscriber-list" component={() => <Page Component={SubscriberList}/>}/>
+          <Route exact path="/" component={() => <Page Component={Campaign} />} />
+          <Route exact path="/campaign-list" component={() => <Page Component={CampaignList} />} />
+          <Route exact path="/add-subscriber" component={() => <Page Component={Subscriber} />} />
+          <Route exact path="/subscriber-list" component={() => <Page Component={SubscriberList} />} />
         </Switch>
       </BrowserRouter>
     </div>
