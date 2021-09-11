@@ -8,7 +8,8 @@ const Form = () => {
     const [message, setMessage] = useState("");
 
     const onInputChange = (type, value) => type === "subject" ? setSubject(value) : setMessage(value);
-    console.log(message);
+
+    
 
     return (
         <form>
