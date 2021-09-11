@@ -1,7 +1,9 @@
 import React from 'react';
+import Form from "./components/Form";
+
 
 const Campaign = () => {
-    return (<div>test</div>);
+    return (<Form / >)
 };
 
 export default Campaign;
