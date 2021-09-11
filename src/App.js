@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
 import './App.css';
+import Campaign from './components/Campaign/Campaign';
+import CampaignList from './components/CampaignList/CampaignList';
+import Subscriber from './components/Subscriber/Subscriber';
+import SubscriberList from './components/SubscriberList/SubscriberList';
+import Page from './components/Page';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={() => <Page Component={Campaign}/>}/>
+          <Route exact path="/campaign-list" component={() => <Page Component={CampaignList}/>}/>
+          <Route exact path="/add-subscriber" component={() => <Page Component={Subscriber}/>}/>
+          <Route exact path="/subscriber-list" component={() => <Page Component={SubscriberList}/>}/>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
