@@ -1,0 +1,13 @@
+$borderColor: #9e9e9e;
+$thColor: #ffab91;
+$tdHoverColor: #eeeeee;
+
+
+@function pxToRem($px) {
+  @return ($px/16)'rem';
+}
+
+@mixin hoverEffect($color, $time) {
+  background-color: $color;
+  transition: background-color $time;
+}
