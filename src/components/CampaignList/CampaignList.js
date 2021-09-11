@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
+import CampaignSingleItem from './CampaignSingleItem';
+
 const CampaignList = () => {
     const [records, setRecords] = useState([]);
 
@@ -15,19 +17,11 @@ const CampaignList = () => {
     useEffect(() => {
         updateRecords();
 
-        //uncomment if 
+        //uncomment if you want to have refreshed data every 2 second
         // setInterval(() => {
         //     updateRecords();
         // }, 2000);
     }, []);
-
-    const addLeadingZero = (number) => {
-        if (number < 10) {
-            return `0${number}`;
-        }
-
-        return number;
-    }
 
     return (
         <table>
@@ -40,18 +34,7 @@ const CampaignList = () => {
             </tr>
             </thead>
             <tbody>
-                {records.map(record => {
-                    const fields = record.fields;
-                    const date = new Date(fields.CreatedAt);
-                    return (
-                        <tr key={record.id}>
-                            <td>{fields.Subject}</td>
-                            <td>{fields.Content}</td>
-                            <td>{`${date.getFullYear()}-${addLeadingZero(date.getMonth()+1)}-${addLeadingZero(date.getDay())}`}</td>
-                            <td>{fields.Status}</td>
-                        </tr>
-                    )
-                })}
+                {records.map(record => <CampaignSingleItem campaign={record}/>)}
             </tbody>
         </table>
     );
