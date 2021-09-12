@@ -1,8 +1,18 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
+import Item from './Item';
 import "./styles/subscriberList.scss";
 
 const SubscriberList = (props) => {
+    const [data, setData] = useState([]);
     const { className } = props;
+
+    useEffect(() => {
+        fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_TABLE_ID}/${process.env.REACT_APP_TABLE_NAME}?api_key=${process.env.REACT_APP_KEY}`)
+            .then(request => request.json())
+            .then(data => setData(data.records))
+            .catch(error => console.log(error))
+    }, [data]);
 
     return (
         <div className={`${className}`}>
@@ -15,12 +25,8 @@ const SubscriberList = (props) => {
                     <th>Name</th>
                     <th>Created</th>
                 </tr>
-                {[].map(user =>
-                    <tr>
-                        <td className={`${className}--table__td`}>{user.email}</td>
-                        <td className={`${className}--table__td`}>{user.name}</td>
-                        <td className={`${className}--table__td`}>{user.created}</td>
-                    </tr>
+                {data.map(user =>
+                    <Item user={user} className={className}  key={user.id}/>
                 )}
             </table>
         </div>

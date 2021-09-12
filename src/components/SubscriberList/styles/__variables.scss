@@ -11,3 +11,7 @@ $tdHoverColor: #eeeeee;
   background-color: $color;
   transition: background-color $time;
 }
+
+@mixin tableBorder ($size, $color: $borderColor ) {
+  border: $size solid $color;
+}
