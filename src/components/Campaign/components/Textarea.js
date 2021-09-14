@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Textarea = ({type, label, onChange}) => {
+const Textarea = ({type, label, register, required}) => {
     return (
     <p>
         <label>{label}</label>
-        <textarea type={type} onChange={(e) => onChange(label, e.target.value)}></textarea>
+        <textarea type={type} {...register(label, { required })}></textarea>
     </p>
     )
 };

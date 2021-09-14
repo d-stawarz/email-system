@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Input = ({type, label, onChange}) => {
+const Input = ({type, label, register, required}) => {
     return (
     <p>
         <label>{label}</label>
-        <input type={type} onChange={(e) => onChange(label, e.target.value)}></input>
+        <input type={type} {...register(label, { required })}></input>
     </p>
     )
 };
