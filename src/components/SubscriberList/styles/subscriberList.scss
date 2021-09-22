@@ -1,0 +1,42 @@
+@use "_variables" as *;
+
+
+.subscribersList {
+  padding: 15px;
+  font-size: pxToRem(30);
+
+  &__label {
+    text-align: start;
+    text-indent: 15px;
+    font-weight: bolder;
+    padding-block: 20px;
+  }
+
+  &--table {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border-collapse: collapse;
+    @include tableBorder(2px);
+
+    &__tr {
+      background-color: $thColor;
+      th {
+        @include tableBorder(1px);
+      }
+    }
+
+    tr {
+      border: 1px solid $borderColor;
+      @include hoverEffect(none, 0.3s)
+    }
+    tr:hover:not(:first-child) {
+      @include hoverEffect($tdHoverColor, 0.3s)
+    }
+
+    &__td {
+      padding: 20px;
+      @include tableBorder(1px);
+    }
+  }
+}
