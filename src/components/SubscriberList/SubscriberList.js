@@ -25,11 +25,12 @@ const SubscriberList = (props) => {
                     <th>Name</th>
                     <th>Created</th>
                 </tr>
-                {data.map(user =>
+                {data && data.map(user =>
                     <Item user={user} className={className}  key={user.id}/>
                 )}
             </table>
         </div>
     );
+}
 
 export default SubscriberList;
