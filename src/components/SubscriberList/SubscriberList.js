@@ -31,6 +31,5 @@ const SubscriberList = (props) => {
             </table>
         </div>
     );
-};
 
 export default SubscriberList;
