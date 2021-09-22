@@ -12,6 +12,7 @@ function useInput(initialValue = '') {
   const [value, setValue] = useState(initialValue);
 
   const handleChange = (event) => {
+    console.log('handle');
     setValue(event.target.value);
   }
 
@@ -25,13 +26,22 @@ const Subscriber = () => {
 
   async function AddSubscriberToTable(){
 
-    const data = ([
-      {fields: {'Email': firstName}},
-      {fields: {'Name': emailLogin}},
-      {fields: {'CreatedAt': new Date()}},
-    ]);
+    
 
-    const response = await fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_BASE_KEY}/${process.env.REACT_APP_CAMPAIGN_TABLE_NAME}`, {
+    // const data = ([
+    //   {fields: {'Email': firstName}},
+    //   {fields: {'Name': emailLogin}},
+    //   {fields: {'CreatedAt': '2021-09-20 20:00'}},
+    // ]);
+    const data = {
+      fields: {
+        Email: firstName,
+        Name: emailLogin,
+        CreatedAt: new Date(),
+      }
+    };
+
+    const response = await fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_BASE_KEY}/${process.env.REACT_APP_SUBSCRIBER_TABLE_NAME}`, {
             method: 'POST',
             headers: {
               'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`,
@@ -49,7 +59,7 @@ const Subscriber = () => {
         className="form__input" id="firstName"
         {...register("firstName")}
         autoComplete="off"
-        handleChange={handleChangeFirstName}
+        onChange={handleChangeFirstName}
       ></input>
 
       <label>E-mail login</label>
@@ -57,7 +67,7 @@ const Subscriber = () => {
         className="form__input" id="email"
         {...register("E-mailLogin")}
         autoComplete="off"
-        handleChange={handleChangeEmailLogin}
+        onChange={handleChangeEmailLogin}
       ></input>
 
       <button className="form__button" type="submit" onClick={AddSubscriberToTable}>
